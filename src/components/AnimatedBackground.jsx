@@ -11,9 +11,18 @@ export default function AnimatedBackground() {
           WebkitMaskImage: 'radial-gradient(circle at 50% 30%, black, transparent 75%)',
         }}
       />
-      <div className="blob blob-purple" />
-      <div className="blob blob-cyan" />
-      <div className="blob blob-pink" />
+      <div
+        className="absolute left-[10%] top-[5%] h-[40vw] w-[40vw] rounded-full opacity-20"
+        style={{ background: 'radial-gradient(circle, #7c5cff, transparent 65%)' }}
+      />
+      <div
+        className="absolute right-[5%] top-[25%] h-[35vw] w-[35vw] rounded-full opacity-15"
+        style={{ background: 'radial-gradient(circle, #4cd6ff, transparent 65%)' }}
+      />
+      <div
+        className="absolute bottom-[5%] left-[30%] h-[30vw] w-[30vw] rounded-full opacity-10"
+        style={{ background: 'radial-gradient(circle, #ff5cf4, transparent 65%)' }}
+      />
     </div>
   )
 }
