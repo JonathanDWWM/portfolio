@@ -39,10 +39,10 @@ function ProjectCard({ project, index, onOpen }) {
   return (
     <motion.article
       onClick={() => onOpen(index)}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.35, delay: (index % 2) * 0.05 }}
       data-cursor-hover
       className="glow-border group relative cursor-pointer overflow-hidden rounded-3xl glass p-1"
     >

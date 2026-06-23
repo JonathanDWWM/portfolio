@@ -32,10 +32,10 @@ export default function About() {
 
       <div className="mt-12 grid gap-12 md:grid-cols-2">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.4 }}
           className="space-y-5 text-lg leading-relaxed text-white/70"
         >
           {about.paragraphs.map((p, i) => (
@@ -44,10 +44,10 @@ export default function About() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-1"
         >
           {stats.map((s) => (
@@ -70,10 +70,10 @@ export default function About() {
 export function SectionTitle({ index, title }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.35 }}
       className="flex items-center gap-4"
     >
       <span className="font-mono text-sm text-accent-glow">{index}</span>
