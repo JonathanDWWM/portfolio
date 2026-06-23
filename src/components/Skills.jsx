@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { skills } from '../data'
 import { SectionTitle } from './About'
 
@@ -8,13 +7,9 @@ export default function Skills() {
       <SectionTitle index="02" title="Compétences" />
 
       <div className="mt-12 grid gap-6 md:grid-cols-3">
-        {skills.map((group, gi) => (
-          <motion.div
+        {skills.map((group) => (
+          <div
             key={group.category}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.35, delay: gi * 0.07 }}
             data-cursor-hover
             className="glow-border glass rounded-2xl p-6"
           >
@@ -31,7 +26,7 @@ export default function Skills() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
