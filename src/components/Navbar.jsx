@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
 
 const links = [
   { label: 'Accueil', href: '#hero' },
@@ -18,19 +17,8 @@ export default function Navbar() {
   }, [])
 
   return (
-    <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-3' : 'py-5'
-      }`}
-    >
-      <div
-        className={`mx-auto flex max-w-5xl items-center justify-between rounded-2xl px-5 py-3 transition-all duration-300 ${
-          scrolled ? 'glass mx-4 md:mx-auto' : 'bg-transparent'
-        }`}
-      >
+    <nav className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'}`}>
+      <div className={`mx-auto flex max-w-5xl items-center justify-between rounded-2xl px-5 py-3 transition-all duration-300 ${scrolled ? 'glass mx-4 md:mx-auto' : 'bg-transparent'}`}>
         <a href="#hero" className="font-mono text-sm font-semibold tracking-wide">
           <span className="text-gradient">JB</span>
           <span className="text-white/40">.dev</span>
@@ -49,6 +37,6 @@ export default function Navbar() {
           ))}
         </ul>
       </div>
-    </motion.nav>
+    </nav>
   )
 }

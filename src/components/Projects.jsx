@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight, Github, X, Check, Calendar } from 'lucide-react'
 import { projects } from '../data'
 import { SectionTitle } from './About'
@@ -37,18 +36,12 @@ function Thumb({ project, index, className }) {
 
 function ProjectCard({ project, index, onOpen }) {
   return (
-    <motion.article
+    <article
       onClick={() => onOpen(index)}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.35, delay: (index % 2) * 0.05 }}
-      data-cursor-hover
       className="glow-border group relative cursor-pointer overflow-hidden rounded-3xl glass p-1"
     >
       <div className="overflow-hidden rounded-[20px]">
         <Thumb project={project} index={index} className="relative h-48 w-full overflow-hidden" />
-
         <div className="p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -76,7 +69,7 @@ function ProjectCard({ project, index, onOpen }) {
           </span>
         </div>
       </div>
-    </motion.article>
+    </article>
   )
 }
 
@@ -92,18 +85,11 @@ function ProjectModal({ project, index, onClose }) {
   }, [onClose])
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <div
       onClick={onClose}
       className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-ink/80 p-4 backdrop-blur-md sm:p-8"
     >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.92, y: 30 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+      <div
         onClick={(e) => e.stopPropagation()}
         className="glow-border relative my-auto w-full max-w-3xl overflow-hidden rounded-3xl bg-[#0b0d16]"
       >
@@ -111,7 +97,6 @@ function ProjectModal({ project, index, onClose }) {
           <Thumb project={project} index={index} className="relative h-52 w-full overflow-hidden sm:h-64" />
           <button
             onClick={onClose}
-            data-cursor-hover
             aria-label="Fermer"
             className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-ink/60 text-white/80 backdrop-blur transition-colors hover:bg-ink hover:text-white"
           >
@@ -181,7 +166,6 @@ function ProjectModal({ project, index, onClose }) {
                   href={project.link}
                   target="_blank"
                   rel="noreferrer"
-                  data-cursor-hover
                   className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-cyan-glow px-5 py-2.5 text-sm font-medium text-ink transition-transform hover:scale-105"
                 >
                   Voir le projet <ArrowUpRight size={16} />
@@ -192,7 +176,6 @@ function ProjectModal({ project, index, onClose }) {
                   href={project.repo}
                   target="_blank"
                   rel="noreferrer"
-                  data-cursor-hover
                   className="inline-flex items-center gap-2 rounded-full glass px-5 py-2.5 text-sm font-medium text-white/80 transition-colors hover:text-white"
                 >
                   <Github size={16} /> Code source
@@ -201,8 +184,8 @@ function ProjectModal({ project, index, onClose }) {
             </div>
           )}
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   )
 }
 
@@ -222,15 +205,13 @@ export default function Projects() {
         ))}
       </div>
 
-      <AnimatePresence>
-        {openIndex !== null && (
-          <ProjectModal
-            project={projects[openIndex]}
-            index={openIndex}
-            onClose={() => setOpenIndex(null)}
-          />
-        )}
-      </AnimatePresence>
+      {openIndex !== null && (
+        <ProjectModal
+          project={projects[openIndex]}
+          index={openIndex}
+          onClose={() => setOpenIndex(null)}
+        />
+      )}
     </section>
   )
 }

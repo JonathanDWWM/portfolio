@@ -1,29 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-import { useInView, animate } from 'framer-motion'
 import { about, stats } from '../data'
-
-function Counter({ value, suffix }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-50px' })
-  const [display, setDisplay] = useState(0)
-
-  useEffect(() => {
-    if (!inView) return
-    const controls = animate(0, value, {
-      duration: 1.6,
-      ease: 'easeOut',
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    })
-    return () => controls.stop()
-  }, [inView, value])
-
-  return (
-    <span ref={ref}>
-      {display}
-      {suffix}
-    </span>
-  )
-}
 
 export default function About() {
   return (
@@ -39,12 +14,9 @@ export default function About() {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-1">
           {stats.map((s) => (
-            <div
-              key={s.label}
-              className="glow-border glass rounded-2xl p-6 text-center md:text-left"
-            >
+            <div key={s.label} className="glow-border glass rounded-2xl p-6 text-center md:text-left">
               <div className="text-4xl font-bold text-gradient">
-                <Counter value={s.value} suffix={s.suffix} />
+                {s.value}{s.suffix}
               </div>
               <div className="mt-1 text-sm text-white/50">{s.label}</div>
             </div>
