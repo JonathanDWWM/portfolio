@@ -1,11 +1,5 @@
-import { useRef, useState, useEffect } from 'react'
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight, Github, X, Check, Calendar } from 'lucide-react'
 import { projects } from '../data'
 import { SectionTitle } from './About'
@@ -42,40 +36,20 @@ function Thumb({ project, index, className }) {
 }
 
 function ProjectCard({ project, index, onOpen }) {
-  const ref = useRef(null)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], ['9deg', '-9deg']), { stiffness: 200, damping: 18 })
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], ['-9deg', '9deg']), { stiffness: 200, damping: 18 })
-
-  const handleMove = (e) => {
-    const rect = ref.current.getBoundingClientRect()
-    x.set((e.clientX - rect.left) / rect.width - 0.5)
-    y.set((e.clientY - rect.top) / rect.height - 0.5)
-  }
-  const handleLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
   return (
     <motion.article
-      ref={ref}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
       onClick={() => onOpen(index)}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', transformPerspective: 1000 }}
       data-cursor-hover
       className="glow-border group relative cursor-pointer overflow-hidden rounded-3xl glass p-1"
     >
       <div className="overflow-hidden rounded-[20px]">
         <Thumb project={project} index={index} className="relative h-48 w-full overflow-hidden" />
 
-        <div className="p-6" style={{ transform: 'translateZ(40px)' }}>
+        <div className="p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
               <h3 className="text-xl font-semibold">{project.title}</h3>
